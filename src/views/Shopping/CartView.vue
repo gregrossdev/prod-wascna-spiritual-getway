@@ -67,7 +67,7 @@ let loaded = ref(false);
 onMounted(() => {
   const script = document.createElement('script')
   script.src =
-    'https://www.paypal.com/sdk/js?client-id=AWgwiyX_FGfMbtGAv-sQs3UYtxrUsLAzSIuTpRQ9uzQAYJKpQA9uUl_E4bCyTclRH38Txl-gVBxJZuC4'
+    'https://www.paypal.com/sdk/js?client-id=AR-TqpWzjOFyg9yPN3AB8Wqa3d5FcGpVIN2OwmrMwlbbjJ4_Bs4MGv4BJfVoykElichgokgYhDE8qmEx'
   script.addEventListener('load', setLoaded)
   document.body.appendChild(script)
 })
@@ -92,6 +92,11 @@ function setLoaded() {
       onApprove: async (data, actions) => {
         const order = await actions.order.capture()
         paidFor.value = true
+        swal({
+          title: 'You have submitted your payment!',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
       },
       onError: (err) => {
         console.log(err)
