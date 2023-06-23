@@ -52,3 +52,8 @@
   </article>
 </template>
 
+<style>
+h1,h2,h3,p {
+  @apply text-black;
+}
+</style>
