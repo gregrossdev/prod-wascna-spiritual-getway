@@ -1,7 +1,7 @@
 @import './base.css';
 
 .body-wrapper {
-    @apply bg-gray-50 min-h-screen py-4;
+    @apply bg-gray-50 min-h-screen py-4 text-black;
 }
 
 .app-container {

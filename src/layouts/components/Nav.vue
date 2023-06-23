@@ -56,7 +56,7 @@ const count = computed(() => {
        {{ count }}
     </span>
     <div class="grid w-32 h-32 bg-slate-400 place-items-center">
-      <RouterLink to="/cart">
+      <RouterLink to="/cart" class="text-black font-bold text-2xl">
         CART
       </RouterLink>
     </div>
