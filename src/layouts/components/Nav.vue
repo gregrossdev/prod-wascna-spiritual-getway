@@ -50,11 +50,16 @@ const count = computed(() => {
     </RouterLink>
   </header>
 
-  <div class="chat chat-start fixed z-20">
-    <div class="chat-bubble chat-bubble-warning">
-      <RouterLink to="/cart" class="font-bold text-6xl">
-      CART {{ count }}
-    </RouterLink></div>
+
+  <div class="indicator fixed bottom-0 z-20">
+    <span class="indicator-item badge badge-secondary p-8 text-3xl">
+       {{ count }}
+    </span>
+    <div class="grid w-32 h-32 bg-slate-400 place-items-center">
+      <RouterLink to="/cart">
+        CART
+      </RouterLink>
+    </div>
   </div>
 </template>
 

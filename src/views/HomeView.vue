@@ -4,7 +4,7 @@
 
 
 <template>
-  <article class="prose">
+  <article class="prose text-black">
     <header>
       <h3>Sep 15</h3>
       <h2>WASCNA Spiritual Getaway</h2>
