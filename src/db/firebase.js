@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_APP_API_KEY,
-  authDomain: import.meta.env.VITE_APP_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_APP_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_APP_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_APP_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_APP_APP_ID
+  apiKey: "AIzaSyBRqsjxTeIlS6gmGmo6Bo-HGc72nacw_pg",
+  authDomain: "spiritual-getaway.firebaseapp.com",
+  projectId: "spiritual-getaway",
+  storageBucket: "spiritual-getaway.appspot.com",
+  messagingSenderId: "858553738391",
+  appId: "1:858553738391:web:93b5b6d13b1b87ed5e75d2"
 };
 
 
