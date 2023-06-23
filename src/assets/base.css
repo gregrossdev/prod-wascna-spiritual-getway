@@ -10,3 +10,8 @@
         font-size: x-large;
     }
 }
+
+
+h1,h2,h3,p {
+    @apply text-black;
+}
