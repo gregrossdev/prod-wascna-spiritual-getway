@@ -60,9 +60,6 @@ function refreshPage(id) {
 }
 
 // paypal
-const paypalCreateOrder = window.firebase.functions().httpsCallable("paypalCreateOrder");
-const paypalHandleOrder = window.firebase.functions().httpsCallable("paypalHandleOrder");
-
 const paypal = ref(null);
 let  paidFor = ref(false);
 let loaded = ref(false);
