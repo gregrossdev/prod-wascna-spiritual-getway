@@ -1,5 +1,6 @@
 <script setup>
 
+import Nav from "@/views/layouts/components/Nav.vue";
 </script>
 
 
@@ -50,6 +51,12 @@
       </p>
     </section>
   </article>
+  <RouterLink
+    class="no-underline bg-orange-600 px-8 py-4 text-white items-center text-2xl flex"
+    to="/register"
+  >
+    Register Now
+  </RouterLink>
 </template>
 
 <style scoped>

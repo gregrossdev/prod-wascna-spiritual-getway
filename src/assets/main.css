@@ -9,7 +9,7 @@
 }
 
 .layout-wrapper {
-    @apply md:p-4 mb-40 bg-gray-200 shadow-md rounded flex flex-col;
+    @apply md:p-4 bg-gray-200 shadow-md rounded flex flex-col;
 }
 
 .content-container {

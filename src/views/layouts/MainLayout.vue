@@ -8,7 +8,7 @@ import Nav from "./components/Nav.vue";
     <Nav />
     <main class="py-4">
       <div class="content-container">
-      <slot name="router"/>
+       <slot name="router"/>
       </div>
     </main>
   </div>

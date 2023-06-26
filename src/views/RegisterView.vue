@@ -147,6 +147,8 @@ function removeProductFromCart(id) {
       </div>
     </section>
 
+    <div class="mb-40"></div>
+
 </template>
 
 
