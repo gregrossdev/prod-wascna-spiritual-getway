@@ -3,6 +3,8 @@ import { computed, onMounted, ref } from "vue";
 import { toCurrency } from "@/shared/utils.js";
 import { db } from "@/db/firebase.js";
 import { collection, doc, onSnapshot, updateDoc } from "firebase/firestore";
+import ShoppingCart from "@/components/Shopping/ShoppingCart.vue";
+import ProductCard from "@/components/Products/ProductCard.vue";
 // import { useCartStore} from "@/stores/storeCart.js";
 // const storeCart = useCartStore();
 
@@ -67,67 +69,14 @@ function removeProductFromCart(id) {
 </script>
 
 <template>
-  <section class="prose prose-xl">
 
-    <header class="text-center text-xl font-semibold px-8 py-2">
+
+    <ShoppingCart />
+
+    <header class="text-center p-8">
       <h2>WASCNA Spiritual Getaway</h2>
       <p>September 15 · 3pm - September 17 · 1pm EDT</p>
     </header>
-
-<!--    <h2>Day Pass</h2>-->
-<!--    <section>-->
-<!--      <figure>-->
-<!--        <img alt="Zion Retreat Center"-->
-<!--             class="rounded"-->
-<!--             src="../assets/fish.jpeg" />-->
-<!--      </figure>-->
-<!--      <div class="grid gap-4 grid-cols-1 md:grid-cols-2 py-2">-->
-<!--        <article v-for="item in noCabin"-->
-<!--                 class="card card-compact shadow-xl not-prose">-->
-<!--          <figure>-->
-<!--            <img-->
-<!--              :src="item.url"-->
-<!--              alt="Card Image"-->
-<!--            />-->
-<!--          </figure>-->
-<!--          <section class="card-body">-->
-<!--            <h2 class="card-title">-->
-<!--              {{ item.name }}-->
-<!--            </h2>-->
-<!--            <div v-if="!item.paidFor">-->
-<!--              <p class="font-semibold pb-4">{{ item.description }}</p>-->
-<!--              <div class="justify-end card-actions">-->
-<!--                <button-->
-<!--                  :class="{-->
-<!--                'btn-primary': !item.cart,-->
-<!--                'btn-success': item.cart,-->
-<!--              }"-->
-<!--                  :disabled="item.cart"-->
-<!--                  class="btn  btn-block "-->
-<!--                  @click="updateProductToCart(item.id)"-->
-<!--                >-->
-<!--                  {{ !item.cart ? toCurrency(item.price) : "Added" }}-->
-<!--                </button>-->
-<!--                <button-->
-<!--                  :class="{-->
-<!--                'btn-warning': item.cart,-->
-<!--                'btn-info': !item.cart,-->
-<!--                }"-->
-<!--                  :disabled="!item.cart"-->
-<!--                  class="btn btn-block"-->
-<!--                  @click="removeProductFromCart(item.id)">-->
-<!--                  {{ item.cart ? "Remove" : "Removed" }}-->
-<!--                </button>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div v-else>-->
-<!--              <h2 class="text-4xl font-bold">Reserved</h2>-->
-<!--            </div>-->
-
-<!--          </section>-->
-<!--        </article>-->
-<!--      </div>-->
-<!--    </section>-->
 
 
     <h2>Fish Cabin</h2>
@@ -137,51 +86,13 @@ function removeProductFromCart(id) {
              class="rounded"
              src="../assets/fish.jpeg" />
       </figure>
-      <div class="grid gap-4 grid-cols-1 md:grid-cols-2 py-2">
-        <article v-for="item in fishCabin"
-                 class="card card-compact shadow-xl not-prose">
-          <figure>
-            <img
-              :src="item.url"
-              alt="Card Image"
-            />
-          </figure>
-          <section class="card-body">
-            <h2 class="card-title">
-              {{ item.name }}
-            </h2>
-            <div v-if="!item.paidFor">
-              <p class="font-semibold pb-4">{{ item.description }}</p>
-              <div class="justify-end card-actions">
-                <button
-                  :class="{
-                'btn-primary': !item.cart,
-                'btn-success': item.cart,
-              }"
-                  :disabled="item.cart"
-                  class="btn  btn-block "
-                  @click="updateProductToCart(item.id)"
-                >
-                  {{ !item.cart ? toCurrency(item.price) : "Added" }}
-                </button>
-                <button
-                  :class="{
-                'btn-warning': item.cart,
-                'btn-info': !item.cart,
-                }"
-                  :disabled="!item.cart"
-                  class="btn btn-block"
-                  @click="removeProductFromCart(item.id)">
-                  {{ item.cart ? "Remove" : "Removed" }}
-                </button>
-              </div>
-            </div>
-            <div v-else>
-              <h2 class="text-4xl font-bold">Reserved</h2>
-            </div>
-
-          </section>
-        </article>
+      <div class="product-grid">
+        <ProductCard
+          v-for="item in fishCabin"
+          :item="item"
+          @addItem="updateProductToCart(item.id)"
+          @removeItem="removeProductFromCart(item.id)"
+        />
       </div>
     </section>
 
@@ -190,53 +101,15 @@ function removeProductFromCart(id) {
       <figure>
         <img alt="Zion Retreat Center"
              class="rounded"
-             src="../assets/fish.jpeg" />
+             src="../assets/eagle.jpeg" />
       </figure>
-      <div class="grid gap-4 grid-cols-1 md:grid-cols-2 py-2">
-        <article v-for="item in eagleCabin"
-                 class="card card-compact shadow-xl not-prose">
-          <figure>
-            <img
-              :src="item.url"
-              alt="Card Image"
-            />
-          </figure>
-          <section class="card-body">
-            <h2 class="card-title">
-              {{ item.name }}
-            </h2>
-            <div v-if="!item.paidFor">
-              <p class="font-semibold pb-4">{{ item.description }}</p>
-              <div class="justify-end card-actions">
-                <button
-                  :class="{
-                'btn-primary': !item.cart,
-                'btn-success': item.cart,
-              }"
-                  :disabled="item.cart"
-                  class="btn  btn-block "
-                  @click="updateProductToCart(item.id)"
-                >
-                  {{ !item.cart ? toCurrency(item.price) : "Added" }}
-                </button>
-                <button
-                  :class="{
-                'btn-warning': item.cart,
-                'btn-info': !item.cart,
-                }"
-                  :disabled="!item.cart"
-                  class="btn btn-block"
-                  @click="removeProductFromCart(item.id)">
-                  {{ item.cart ? "Remove" : "Removed" }}
-                </button>
-              </div>
-            </div>
-            <div v-else>
-              <h2 class="text-4xl font-bold">Reserved</h2>
-            </div>
-
-          </section>
-        </article>
+      <div class="product-grid">
+        <ProductCard
+          v-for="item in eagleCabin"
+          :item="item"
+          @addItem="updateProductToCart(item.id)"
+          @removeItem="removeProductFromCart(item.id)"
+        />
       </div>
     </section>
 
@@ -245,53 +118,15 @@ function removeProductFromCart(id) {
       <figure>
         <img alt="Zion Retreat Center"
              class="rounded"
-             src="../assets/fish.jpeg" />
+             src="../assets/bear.jpeg" />
       </figure>
-      <div class="grid gap-4 grid-cols-1 md:grid-cols-2 py-2">
-        <article v-for="item in bearCabin"
-                 class="card card-compact shadow-xl not-prose">
-          <figure>
-            <img
-              :src="item.url"
-              alt="Card Image"
-            />
-          </figure>
-          <section class="card-body">
-            <h2 class="card-title">
-              {{ item.name }}
-            </h2>
-            <div v-if="!item.paidFor">
-              <p class="font-semibold pb-4">{{ item.description }}</p>
-              <div class="justify-end card-actions">
-                <button
-                  :class="{
-                'btn-primary': !item.cart,
-                'btn-success': item.cart,
-              }"
-                  :disabled="item.cart"
-                  class="btn  btn-block "
-                  @click="updateProductToCart(item.id)"
-                >
-                  {{ !item.cart ? toCurrency(item.price) : "Added" }}
-                </button>
-                <button
-                  :class="{
-                'btn-warning': item.cart,
-                'btn-info': !item.cart,
-                }"
-                  :disabled="!item.cart"
-                  class="btn btn-block"
-                  @click="removeProductFromCart(item.id)">
-                  {{ item.cart ? "Remove" : "Removed" }}
-                </button>
-              </div>
-            </div>
-            <div v-else>
-              <h2 class="text-4xl font-bold">Reserved</h2>
-            </div>
-
-          </section>
-        </article>
+      <div class="product-grid">
+        <ProductCard
+          v-for="item in bearCabin"
+          :item="item"
+          @addItem="updateProductToCart(item.id)"
+          @removeItem="removeProductFromCart(item.id)"
+        />
       </div>
     </section>
 
@@ -300,56 +135,33 @@ function removeProductFromCart(id) {
       <figure>
         <img alt="Zion Retreat Center"
              class="rounded"
-             src="../assets/fish.jpeg" />
+             src="../assets/deer.jpeg" />
       </figure>
-      <div class="grid gap-4 grid-cols-1 md:grid-cols-2 py-2">
-        <article v-for="item in deerCabin"
-                 class="card card-compact shadow-xl not-prose">
-          <figure>
-            <img
-              :src="item.url"
-              alt="Card Image"
-            />
-          </figure>
-          <section class="card-body">
-            <h2 class="card-title">
-              {{ item.name }}
-            </h2>
-            <div v-if="!item.paidFor">
-              <p class="font-semibold pb-4">{{ item.description }}</p>
-              <div class="justify-end card-actions">
-                <button
-                  :class="{
-                'btn-primary': !item.cart,
-                'btn-success': item.cart,
-              }"
-                  :disabled="item.cart"
-                  class="btn  btn-block "
-                  @click="updateProductToCart(item.id)"
-                >
-                  {{ !item.cart ? toCurrency(item.price) : "Added" }}
-                </button>
-                <button
-                  :class="{
-                'btn-warning': item.cart,
-                'btn-info': !item.cart,
-                }"
-                  :disabled="!item.cart"
-                  class="btn btn-block"
-                  @click="removeProductFromCart(item.id)">
-                  {{ item.cart ? "Remove" : "Removed" }}
-                </button>
-              </div>
-            </div>
-            <div v-else>
-              <h2 class="text-4xl font-bold">Reserved</h2>
-            </div>
-
-          </section>
-        </article>
+      <div class="product-grid">
+        <ProductCard
+          v-for="item in deerCabin"
+          :item="item"
+          @addItem="updateProductToCart(item.id)"
+          @removeItem="removeProductFromCart(item.id)"
+        />
       </div>
     </section>
 
-  </section>
-
 </template>
+
+
+<style scoped>
+
+h2 {
+  @apply text-3xl font-bold py-2;
+}
+
+section {
+  @apply py-4;
+}
+
+.product-grid {
+  @apply grid gap-4 grid-cols-1 md:grid-cols-2 py-8;
+}
+
+</style>

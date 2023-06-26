@@ -4,7 +4,7 @@
 
 
 <template>
-  <article class="prose text-black">
+  <article class="prose">
     <header>
       <h3>Sep 15</h3>
       <h2>WASCNA Spiritual Getaway</h2>
@@ -52,8 +52,8 @@
   </article>
 </template>
 
-<style>
-h1,h2,h3,p {
+<style scoped>
+h1,h2,h3,p, section, strong {
   @apply text-black;
 }
 </style>
