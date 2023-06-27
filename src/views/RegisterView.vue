@@ -20,6 +20,7 @@ onMounted(() => {
         id: doc.id,
         cabin: doc.data().cabin,
         name: doc.data().name,
+        location: doc.data().location,
         description: doc.data().description,
         price: doc.data().price,
         url: doc.data().url,
@@ -49,9 +50,9 @@ const deerCabin = computed(() => {
   return products.value.filter((x) => x.cabin === "deer");
 });
 
-// const noCabin = computed(() => {
-//   return products.value.filter((x) => x.cabin === "none");
-// });
+const noCabin = computed(() => {
+  return products.value.filter((x) => x.cabin === "none");
+});
 
 function updateProductToCart(id) {
   const index = products.value.findIndex(item => item.id === id);
@@ -77,6 +78,18 @@ function removeProductFromCart(id) {
       <h2>WASCNA Spiritual Getaway</h2>
       <p>September 15 · 3pm - September 17 · 1pm EDT</p>
     </header>
+
+  <h2>Testing</h2>
+  <section>
+    <div class="product-grid">
+      <ProductCard
+        v-for="item in noCabin"
+        :item="item"
+        @addItem="updateProductToCart(item.id)"
+        @removeItem="removeProductFromCart(item.id)"
+      />
+    </div>
+  </section>
 
 
     <h2>Fish Cabin</h2>

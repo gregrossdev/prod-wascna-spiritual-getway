@@ -27,9 +27,11 @@ const emitRemoveFromCart = () => {
       />
     </figure>
     <section class="card-body">
+      <span class="block font-bold text-xl py-1">{{ item.location }}</span>
       <h2 class="card-title">
         {{ item.name }}
       </h2>
+
       <div v-if="!item.paidFor">
         <p class="font-semibold pb-4">{{ item.description }}</p>
         <div class="justify-end card-actions align-end">
