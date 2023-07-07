@@ -79,17 +79,17 @@ function removeProductFromCart(id) {
       <p>September 15 · 3pm - September 17 · 1pm EDT</p>
     </header>
 
- <h2>Testing</h2>
-  <section>
-    <div class="product-grid">
-      <ProductCard
-        v-for="item in noCabin"
-        :item="item"
-        @addItem="updateProductToCart(item.id)"
-        @removeItem="removeProductFromCart(item.id)"
-      />
-    </div>
-</section>
+<!-- <h2>Testing</h2>-->
+<!--  <section>-->
+<!--    <div class="product-grid">-->
+<!--      <ProductCard-->
+<!--        v-for="item in noCabin"-->
+<!--        :item="item"-->
+<!--        @addItem="updateProductToCart(item.id)"-->
+<!--        @removeItem="removeProductFromCart(item.id)"-->
+<!--      />-->
+<!--    </div>-->
+<!--  </section>-->
 
 
     <h2>Fish Cabin</h2>
